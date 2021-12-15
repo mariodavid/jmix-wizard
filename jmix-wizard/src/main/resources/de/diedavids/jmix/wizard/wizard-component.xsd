@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xs:schema
+        xmlns="http://schemas.diedavids.de/wizard/1.0/wizard-component.xsd"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        targetNamespace="http://schemas.diedavids.de/wizard/1.0/wizard-component.xsd"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:layout="http://jmix.io/schema/ui/layout">
+
+    <xs:complexType name="wizardContainer">
+        <xs:complexContent>
+            <xs:extension base="layout:baseComponent">
+                <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                    <xs:element name="tab">
+                        <xs:complexType>
+                            <xs:group ref="layout:layoutOrComponent"/>
+
+                            <xs:attributeGroup ref="layout:requiresId"/>
+                            <xs:attributeGroup ref="layout:hasCaption"/>
+                            <xs:attributeGroup ref="layout:hasIcon"/>
+                            <xs:attributeGroup ref="layout:hasSpacingMargin"/>
+                            <xs:attributeGroup ref="layout:hasVisibility"/>
+                            <xs:attributeGroup ref="layout:hasEnableProp"/>
+                            <xs:attributeGroup ref="layout:hasStyle"/>
+
+                            <xs:attribute name="lazy" type="xs:boolean"/>
+
+                            <xs:attribute name="expand" type="xs:string"/>
+                            <xs:attribute name="detachable" type="xs:boolean"/>
+                            <xs:attribute name="closable" type="xs:boolean"/>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+
+                <xs:attribute name="stylename" type="layout:tabsheetStylename"/>
+                <xs:attribute name="tabCaptionsAsHtml" type="xs:boolean"/>
+                <xs:attribute name="tabsVisible" type="xs:boolean"/>
+
+                <xs:attributeGroup ref="layout:hasTabIndex"/>
+                <xs:attributeGroup ref="layout:hasContextHelp"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:element name="wizard" type="wizardContainer"/>
+
+</xs:schema>

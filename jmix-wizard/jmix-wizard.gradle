@@ -1,0 +1,29 @@
+archivesBaseName = 'jmix-wizard'
+
+dependencies {
+    implementation 'io.jmix.core:jmix-core-starter'
+    implementation 'io.jmix.data:jmix-eclipselink-starter'
+    implementation 'io.jmix.ui:jmix-ui-starter'
+    implementation 'io.jmix.ui:jmix-ui-themes'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'io.jmix.ui:jmix-ui-test-assist'
+
+    testImplementation "org.mockito:mockito-core:4.1.0"
+    testImplementation "org.mockito:mockito-junit-jupiter:4.1.0"
+
+
+    testImplementation 'org.springframework:spring-test'
+    testImplementation 'org.spockframework:spock-core'
+    testImplementation 'org.spockframework:spock-spring'
+    testImplementation 'cglib:cglib-nodep:3.3.0'
+
+    testRuntimeOnly 'org.hsqldb:hsqldb'
+}
+
+test {
+    useJUnitPlatform()
+}
