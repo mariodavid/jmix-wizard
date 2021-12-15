@@ -2,7 +2,7 @@
 
 # Jmix Wizard
 
-This application component let's you create UI wizards through a specific UI component.
+This addon let's you create UI wizards through a specific UI component.
 
 ![checkout-wizard-step-1](img/1-customer.png)
 
@@ -28,7 +28,7 @@ dependencies {
 }
 ```
 
-## Using the application component
+## Using the addon
 
 Add the XML namespace `wizard` to the window tag of your screen like this:
 
@@ -117,7 +117,7 @@ public class WizardTestScreen extends Screen {
 
 
 ### Example usage
-To see this application component in action, check out this example: [jmix-wizard-example](https://github.com/mariodavid/jmix-wizard-example).
+To see this addon in action, check out this example: [jmix-wizard-example](https://github.com/mariodavid/jmix-wizard-example).
 
 #### Example: Checkout Wizard
 
