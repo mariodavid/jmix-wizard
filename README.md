@@ -33,7 +33,7 @@ dependencies {
 Add the XML namespace `wizard` to the window tag of your screen like this:
 
 ```xml
-    <window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+    <window xmlns="http://jmix.io/schema/ui/window"
             xmlns:wizard="http://schemas.diedavids.de/wizard/1.0/wizard-component.xsd">
 ```
 
@@ -58,7 +58,7 @@ Then add your wizard component to the screen:
 </wizard:wizard>
 ```
 
-The Wizard as well as its Tabs have the same attributes available as the ones from the `TabSheet` component of CUBA, as the Wizard component is just a specialized version of the `TabSheet`  component.
+The Wizard as well as its Tabs have the same attributes available as the ones from the `TabSheet` component of Jmix, as the Wizard component is just a specialized version of the `TabSheet`  component.
 
 The Wizard has particular subscription methods, that can be used in order to programmatically interact with
 the Wizard component. Here is an example of those:
@@ -117,7 +117,7 @@ public class WizardTestScreen extends Screen {
 
 
 ### Example usage
-To see this application component in action, check out this example: [cuba-example-using-wizard](https://github.com/mariodavid/cuba-example-using-wizard).
+To see this application component in action, check out this example: [jmix-wizard-example](https://github.com/mariodavid/jmix-wizard-example).
 
 #### Example: Checkout Wizard
 
