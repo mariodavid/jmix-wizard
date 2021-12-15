@@ -8,6 +8,4 @@
     <property name="uuid.type" dbms="oracle" value="varchar2(32)"/>
     <property name="uuid.type" dbms="!oracle" value="uuid"/>
 
-    <include file="/de/diedavids/jmix/wizard/liquibase/changelog/001-jmix-wizard-addon.xml"/>
-
 </databaseChangeLog>

@@ -17,6 +17,7 @@ import io.jmix.ui.security.UiPermissionDescriptor;
 import io.jmix.ui.widget.JmixCssActionsLayout;
 import io.jmix.ui.xml.layout.ComponentLoader;
 import org.dom4j.Element;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Nullable;
@@ -25,7 +26,7 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public abstract class AbstractWebWizard extends CssLayoutImpl
-    implements Wizard, UiPermissionAware, SupportsChildrenSelection {
+    implements Wizard, UiPermissionAware, SupportsChildrenSelection, InitializingBean {
 
 
     @Autowired
@@ -42,6 +43,15 @@ public abstract class AbstractWebWizard extends CssLayoutImpl
 
         component = new JmixCssActionsLayout();
 
+    }
+
+
+    @Override
+    public void afterPropertiesSet() {
+        initComponent();
+    }
+
+    private void initComponent() {
         layoutWrapper = createLayout();
         com.vaadin.ui.Component unwrap = ComponentsHelper.getComposition(layoutWrapper);
         component.addComponent(unwrap);

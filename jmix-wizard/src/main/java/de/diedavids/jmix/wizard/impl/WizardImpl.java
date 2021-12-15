@@ -29,8 +29,8 @@ public class WizardImpl extends AbstractWebWizard {
     protected GroupBoxLayout createLayout() {
 
         buttonsPanel = new WizardButtonsPanel(
-            uiComponents,
-            messages
+                uiComponents,
+                messages
         );
 
         if (tabSheetLayout == null) {
@@ -69,9 +69,9 @@ public class WizardImpl extends AbstractWebWizard {
 
     private void addWizardShortcutActions() {
         layoutWrapper.addShortcutAction(new ShortcutAction("CTRL-ALT-ARROW_RIGHT",
-            shortcutTriggeredEvent -> nextTab()));
+                shortcutTriggeredEvent -> nextTab()));
         layoutWrapper.addShortcutAction(new ShortcutAction("CTRL-ALT-ARROW_LEFT",
-            shortcutTriggeredEvent -> previousTab()));
+                shortcutTriggeredEvent -> previousTab()));
     }
 
     @Override
@@ -129,29 +129,29 @@ public class WizardImpl extends AbstractWebWizard {
 
     private ButtonsPanel createWizardButtonPanel() {
 
-       return buttonsPanel.createWizardButtonPanel(
-            asList(
-                WizardButtonsPanel.buttonDescriptor(
-                    WizardButtonsPanel.WizardButtonType.CANCEL,
-                    this::handleCancelClick,
-                    () -> true
-                ),
-                WizardButtonsPanel.buttonDescriptor(
-                    WizardButtonsPanel.WizardButtonType.PREVIOUS,
-                    e -> previousTab(),
-                    () -> !currentTabIsFirstTab()
-                ),
-                WizardButtonsPanel.buttonDescriptor(
-                    WizardButtonsPanel.WizardButtonType.NEXT,
-                    e -> nextTab(),
-                    () -> !currentTabIsLastTab()
-                ),
-                WizardButtonsPanel.buttonDescriptor(
-                    WizardButtonsPanel.WizardButtonType.FINISH,
-                    this::handleFinishClick,
-                    this::currentTabIsLastTab
+        return buttonsPanel.createWizardButtonPanel(
+                asList(
+                        WizardButtonsPanel.buttonDescriptor(
+                                WizardButtonsPanel.WizardButtonType.CANCEL,
+                                this::handleCancelClick,
+                                () -> true
+                        ),
+                        WizardButtonsPanel.buttonDescriptor(
+                                WizardButtonsPanel.WizardButtonType.PREVIOUS,
+                                e -> previousTab(),
+                                () -> !currentTabIsFirstTab()
+                        ),
+                        WizardButtonsPanel.buttonDescriptor(
+                                WizardButtonsPanel.WizardButtonType.NEXT,
+                                e -> nextTab(),
+                                () -> !currentTabIsLastTab()
+                        ),
+                        WizardButtonsPanel.buttonDescriptor(
+                                WizardButtonsPanel.WizardButtonType.FINISH,
+                                this::handleFinishClick,
+                                this::currentTabIsLastTab
+                        )
                 )
-            )
         );
     }
 
@@ -160,15 +160,15 @@ public class WizardImpl extends AbstractWebWizard {
     }
 
     private void switchToTab(
-        Tab destination,
-        Direction direction
+            Tab destination,
+            Direction direction
     ) {
 
         WizardTabPreChangeEvent tabPreChangeEvent = new WizardTabPreChangeEvent(
-            this,
-            currentTab,
-            destination,
-            direction
+                this,
+                currentTab,
+                destination,
+                direction
         );
         getEventHub().publish(WizardTabPreChangeEvent.class, tabPreChangeEvent);
 
@@ -179,10 +179,10 @@ public class WizardImpl extends AbstractWebWizard {
             tabSheetLayout.setSelectedTab(destination);
 
             WizardTabChangeEvent wizardTabChangeEvent = new WizardTabChangeEvent(
-                this,
-                currentTab,
-                destination,
-                direction
+                    this,
+                    currentTab,
+                    destination,
+                    direction
             );
             getEventHub().publish(WizardTabChangeEvent.class, wizardTabChangeEvent);
 
@@ -196,11 +196,11 @@ public class WizardImpl extends AbstractWebWizard {
     }
 
     private boolean currentTabIsLastTab() {
-        if (tabList.size() > 0) {
-            return getCurrentTabIndex() == tabList.size() - 1;
-        } else {
+        if (tabList.isEmpty()) {
             return false;
         }
+
+        return getCurrentTabIndex() == tabList.size() - 1;
 
     }
 
@@ -263,8 +263,7 @@ public class WizardImpl extends AbstractWebWizard {
 
         if (currentIndex < newIndex) {
             return Direction.NEXT;
-        }
-        else {
+        } else {
             return Direction.PREVIOUS;
         }
     }

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<menu-config xmlns="http://jmix.io/schema/ui/menu">
-
-    <menu id="wizard" caption="msg://de.diedavids.jmix.wizard/menu.addon" insertAfter="administration">
-        <item screen="wizard_Foo.browse" caption="msg://de.diedavids.jmix.wizard.screen.foo/FooBrowse.caption"/>
-    </menu>
-
-</menu-config>

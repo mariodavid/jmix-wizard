@@ -54,7 +54,7 @@ public class WizardButtonsPanel {
         }
     }
 
-    static public WizardButtonDescriptor buttonDescriptor(
+    public static WizardButtonDescriptor buttonDescriptor(
         WizardButtonType type,
         Consumer<Action.ActionPerformedEvent> clickHandler,
         BaseAction.EnabledRule enabledRule
@@ -132,8 +132,10 @@ public class WizardButtonsPanel {
         String id = descriptor.type.getId();
         Button btn = uiComponents.create(Button.class);
         btn.setId(id);
-        btn.setCaption(messages.getMessage(this.getClass(), id + "BtnCaption"));
-        btn.setIcon(messages.getMessage(this.getClass(), id + "BtnIcon"));
+        final String message = messages.getMessage("de.diedavids.jmix.wizard", id + "BtnCaption");
+        final String icon = messages.getMessage("de.diedavids.jmix.wizard", id + "BtnIcon");
+        btn.setCaption(message);
+        btn.setIcon(icon);
 
         BaseAction action = wizardAction(btn, descriptor);
         btn.setAction(action);
