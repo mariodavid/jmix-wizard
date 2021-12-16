@@ -2,6 +2,7 @@
 [![GitHub release](https://img.shields.io/github/release/mariodavid/jmix-wizard.svg)](https://github.com/mariodavid/jmix-wizard/releases/)
 ![CI Pipeline](https://github.com/mariodavid/jmix-wizard/actions/workflows/test.yml/badge.svg)
 [![Example](https://img.shields.io/badge/example-jmix--wizard--example-brightgreen)](https://github.com/mariodavid/jmix-wizard-example)
+[![Jmix Marketplace](https://img.shields.io/badge/marketplace-jmix--wizard-orange)](https://www.jmix.io/marketplace/wizard)
 
 
 # Jmix Wizard
