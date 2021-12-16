@@ -1,4 +1,4 @@
-name: Publish package to GitHub Packages
+name: Publish release
 on:
   release:
     types: [created]
@@ -13,5 +13,6 @@ jobs:
       - name: Publish package
         run: gradle -Pversion=${{ github.event.release.tag_name }} build publish
         env:
-          USERNAME: mariodavid
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ github.token }}
