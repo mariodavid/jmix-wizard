@@ -132,10 +132,8 @@ public class WizardButtonsPanel {
         String id = descriptor.type.getId();
         Button btn = uiComponents.create(Button.class);
         btn.setId(id);
-        final String message = messages.getMessage("de.diedavids.jmix.wizard", id + "BtnCaption");
-        final String icon = messages.getMessage("de.diedavids.jmix.wizard", id + "BtnIcon");
-        btn.setCaption(message);
-        btn.setIcon(icon);
+        btn.setCaption(messages.getMessage("de.diedavids.jmix.wizard", id + "BtnCaption"));
+        btn.setIcon(messages.getMessage("de.diedavids.jmix.wizard", id + "BtnIcon"));
 
         BaseAction action = wizardAction(btn, descriptor);
         btn.setAction(action);
