@@ -8,7 +8,7 @@
 
 # Jmix Wizard
 
-This addon let's you create UI wizards through a specific UI component.
+This addon lets you create UI wizards through a specific UI component.
 
 ![checkout-wizard-step-1](img/1-customer.png)
 
