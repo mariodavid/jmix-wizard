@@ -20,14 +20,6 @@ subprojects {
         maven {
             url 'https://global.repo.jmix.io/repository/public'
         }
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/mariodavid/jmix-wizard")
-            credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-            }
-        }
     }
 
     jmix {
@@ -56,12 +48,12 @@ subprojects {
     publishing {
         repositories {
             maven {
-                url = 'https://myrepo/releases/'
+                name = "GitHubPackages"
+                url = uri("https://maven.pkg.github.com/mariodavid/jmix-wizard")
                 credentials {
-                    username rootProject.hasProperty('uploadUser') ? rootProject['uploadUser'] : 'admin'
-                    password rootProject.hasProperty('uploadPassword') ? rootProject['uploadPassword'] : 'admin'
+                    username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                 }
-                allowInsecureProtocol = true
             }
         }
         publications {
