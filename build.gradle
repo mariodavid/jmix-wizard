@@ -8,7 +8,7 @@ buildscript {
 }
 
 group = 'de.diedavids.jmix'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 
 subprojects {
     apply plugin: 'java-library'
