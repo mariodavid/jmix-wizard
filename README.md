@@ -1,5 +1,7 @@
 [![license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) ![test](https://github.com/mariodavid/jmix-wizard/actions/workflows/test.yml/badge.svg)
 
+<p align="center"><a href="https://github.com/github/mariodavid/packages/11396"><img src="https://img.shields.io/github/release/github/mariodavid.svg?label=GPR&logo=github" alt="GitHub Package Registry version" /></a></p>
+
 # Jmix Wizard
 
 This addon let's you create UI wizards through a specific UI component.
