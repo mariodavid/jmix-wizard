@@ -17,12 +17,13 @@ subprojects {
     repositories {
         mavenCentral()
         maven {
-            url 'https://global.repo.jmix.io/repository/public'
+//            url 'https://global.repo.jmix.io/repository/public'
+            url 'https://nexus.jmix.io/repository/public'
         }
     }
 
     jmix {
-        bomVersion = '1.1.1'
+        bomVersion = '1.2.0-SNAPSHOT'
         projectId = 'wizard'
     }
 

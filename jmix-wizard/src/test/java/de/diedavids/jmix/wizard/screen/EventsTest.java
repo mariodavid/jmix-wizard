@@ -1,28 +1,61 @@
 package de.diedavids.jmix.wizard.screen;
 
-import static de.diedavids.jmix.wizard.Wizard.*;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.vaadin.ui.Button;
+import de.diedavids.jmix.wizard.Wizard;
+import de.diedavids.jmix.wizard.WizardConfiguration;
+import de.diedavids.jmix.wizard.WizardTestConfiguration;
+import de.diedavids.jmix.wizard.screen.sample.simple.SimpleWizard;
+import io.jmix.core.CoreConfiguration;
+import io.jmix.data.DataConfiguration;
+import io.jmix.eclipselink.EclipselinkConfiguration;
+import io.jmix.ui.Screens;
+import io.jmix.ui.UiConfiguration;
+import io.jmix.ui.testassist.junit.UiTest;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.EventObject;
 
-import de.diedavids.jmix.wizard.Wizard;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import static de.diedavids.jmix.wizard.Wizard.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
+@UiTest(
+        // authenticatedUser = "admin", --> throws 'User admin not found'
+        mainScreenId = "TestWizardMainScreen",
+        screenBasePackages = "de.diedavids.jmix.wizard.screen.sample"
+)
+@ContextConfiguration(classes = {
+        CoreConfiguration.class,
+        DataConfiguration.class,
+        EclipselinkConfiguration.class,
+        UiConfiguration.class,
 
-@Disabled
-class WizardEventsTest {
+        WizardConfiguration.class,
+        WizardTestConfiguration.class
+})
+class EventsTest {
 
+    private SimpleWizard screen;
     private Wizard wizard;
 
-
     @BeforeEach
-    void setUp() {
+    void openSimpleWizard(Screens screens) {
 
+        screen = screens.create(SimpleWizard.class);
+
+        screen.show();
+
+        wizard = screen.getWizard();
     }
+
+    @Test
+    void wizardIsPresent() {
+        // then
+        assertThat(wizard)
+                .isNotNull();
+    }
+
 
     @Test
     void when_cancelIsPerformed_then_cancelEventHasBeenReceived() {
@@ -35,7 +68,7 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardCancelClickEvent.class))
-            .isNotNull();
+                .isNotNull();
     }
 
     @Test
@@ -50,10 +83,10 @@ class WizardEventsTest {
         // then:
 
         assertThat(event(WizardTabPreChangeEvent.class))
-            .isNotNull();
+                .isNotNull();
 
         assertThat(event(WizardTabChangeEvent.class))
-            .isNotNull();
+                .isNotNull();
     }
 
 
@@ -68,10 +101,10 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardTabPreChangeEvent.class).getDirection())
-            .isEqualTo(Direction.NEXT);
+                .isEqualTo(Direction.NEXT);
 
         assertThat(event(WizardTabChangeEvent.class).getDirection())
-            .isEqualTo(Direction.NEXT);
+                .isEqualTo(Direction.NEXT);
     }
 
 
@@ -86,10 +119,10 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardTabPreChangeEvent.class).getDirection())
-            .isEqualTo(Direction.PREVIOUS);
+                .isEqualTo(Direction.PREVIOUS);
 
         assertThat(event(WizardTabChangeEvent.class).getDirection())
-            .isEqualTo(Direction.PREVIOUS);
+                .isEqualTo(Direction.PREVIOUS);
     }
 
 
@@ -104,7 +137,7 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardTabChangeEvent.class))
-            .isNotNull();
+                .isNotNull();
     }
 
     @Test
@@ -120,7 +153,7 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardTabChangeEvent.class))
-            .isNull();
+                .isNull();
     }
 
     @Test
@@ -137,12 +170,11 @@ class WizardEventsTest {
 
         // then:
         assertThat(event(WizardFinishClickEvent.class))
-            .isNotNull();
+                .isNotNull();
     }
 
-
     private <T extends EventObject> T event(Class<T> clazz) {
-        return null; //simpleWizard.screen().receivedEvent(clazz);
+        return screen.receivedEvent(clazz);
     }
 
     private Button wizardBtn(String id) {
