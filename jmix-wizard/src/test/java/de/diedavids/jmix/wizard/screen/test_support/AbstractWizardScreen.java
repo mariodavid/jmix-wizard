@@ -1,20 +1,22 @@
-package de.diedavids.jmix.wizard.screen.sample;
+package de.diedavids.jmix.wizard.screen.test_support;
 
 import de.diedavids.jmix.wizard.Wizard;
 import io.jmix.ui.component.TabSheet;
 import io.jmix.ui.screen.Screen;
 import io.jmix.ui.screen.Subscribe;
-import io.jmix.ui.screen.UiController;
-import io.jmix.ui.screen.UiDescriptor;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.inject.Inject;
 import java.util.EventObject;
 import java.util.HashMap;
 
 public abstract class AbstractWizardScreen extends Screen {
 
-    @Inject
+    @Autowired
     protected Wizard wizard;
+
+    public Wizard getWizard() {
+        return wizard;
+    }
 
     protected HashMap<Class, ? super EventObject> events = new HashMap<>();
 

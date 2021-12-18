@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package de.diedavids.jmix.wizard.screen.sample;
+package de.diedavids.jmix.wizard.screen.test_support;
 
 import io.jmix.ui.component.AppWorkArea;
 import io.jmix.ui.component.Window;
