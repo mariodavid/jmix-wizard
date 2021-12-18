@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://customerEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="customerDc"
+                  class="de.diedavids.jmix.jwexample.entity.Customer">
+            <fetchPlan extends="_base">
+                <property name="addresses" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="addressesDc" property="addresses"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="customerDc">
+            <column width="350px">
+                <comboBox id="salutationField" property="salutation"/>
+                <textField id="nameField" property="name"/>
+                <textField id="firstNameField" property="firstName"/>
+                <dateField id="birthdayField" property="birthday"/>
+                <textField id="emailField" property="email"/>
+                <textField id="phoneField" property="phone"/>
+            </column>
+        </form>
+        <groupBox id="addressesBox" caption="msg://de.diedavids.jmix.jwexample.entity/Customer.addresses">
+            <table id="addressesTable" dataContainer="addressesDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="street"/>
+                    <column id="postalCode"/>
+                    <column id="city"/>
+                    <column id="country"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="addressesTable.create"/>
+                    <button action="addressesTable.edit"/>
+                    <button action="addressesTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
