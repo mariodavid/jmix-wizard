@@ -36,6 +36,21 @@ dependencies {
 
 NOTE: If you are updating from CUBA Platform, see [Migration from CUBA](## Migration from CUBA).
 
+
+### Maven Repository
+Right now, you have to add the following maven repository to download the addon:
+
+```groovy
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://nexus.jmix.io/repository/public'
+    }
+}
+```
+
+This might change over the next weeks once the addon is available also `https://global.repo.jmix.io/repository/public` and the Jmix Marketplace.
+
 ## Using the addon
 
 Add the XML namespace `wizard` to the window tag of your screen like this:
