@@ -34,7 +34,7 @@ dependencies {
 }
 ```
 
-NOTE: If you are updating from CUBA Platform, see [Migration from CUBA](##%20Migration%20from%20CUBA).
+NOTE: If you are updating from CUBA Platform, see [Migration from CUBA](##migration-from-cuba).
 
 ## Using the addon
 
