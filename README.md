@@ -36,7 +36,7 @@ dependencies {
 
 NOTE: If you are updating from CUBA Platform, see [Migration from CUBA](#migration-from-cuba).
 
-## Using the addon
+## Using the Addon
 
 Add the XML namespace `wizard` to the window tag of your screen like this:
 
