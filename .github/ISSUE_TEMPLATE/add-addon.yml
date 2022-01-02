@@ -1,0 +1,42 @@
+name: Add Addon
+description: Add an Addon to the Marketplace
+title: "[Add Addon]: "
+labels: ["addon","marketplace"]
+assignees:
+  - mariodavid
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting an Addon to the Jmix Marketplace!
+  - type: input
+    id: name
+    attributes:
+      label: Name
+      description: What is the name of the addon?
+      placeholder: My new Addon
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Code
+      description: What is the code of the addon?
+      placeholder: my-new-addon
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What is your addon about?
+      description: Please provide a description that is visible to the users through the Marketplace.
+    validations:
+      required: true
+  - type: input
+    id: github-repository
+    attributes:
+      label: GitHub Repository
+      description: The link to the GitHub repository of your addon.
+      placeholder: mariodavid/jmix-wizard
+    validations:
+      required: true
