@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 @SpringBootConfiguration
 @EnableAutoConfiguration
-@JmixModule(dependsOn = WizardConfiguration.class)
+@JmixModule(id = "de.diedavids.jmix.wizard.test", dependsOn = WizardConfiguration.class)
 public class WizardTestConfiguration {
 
     @Bean
