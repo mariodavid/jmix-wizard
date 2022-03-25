@@ -30,11 +30,13 @@ Add the dependency to your project:
 
 ```groovy
 dependencies {
-  implementation 'de.diedavids.jmix:jmix-wizard-starter:*addon-version*'
+  implementation 'de.diedavids.jmix.wizard:jmix-wizard-starter:*addon-version*'
 }
 ```
 
-## Using the addon
+NOTE: If you are updating from CUBA Platform, see [Migration from CUBA](#migration-from-cuba).
+
+## Using the Addon
 
 Add the XML namespace `wizard` to the window tag of your screen like this:
 
@@ -137,3 +139,12 @@ To see this addon in action, check out this example: [jmix-wizard-example](https
 ![checkout-wizard-step-3](img/3-items.png)
 
 ![checkout-wizard-step-4](img/4-summary.png)
+
+
+## Migration from CUBA
+
+In case you upgrade from the [CUBA Platform variant of Wizard](https://github.com/mariodavid/cuba-component-wizard), perform the following steps:
+
+* make sure you are using the latest version of CUBA Platform (7.2)
+* make sure you are using the latest version of Wizard (0.8.0)
+* replace `xmlns:wizard="http://schemas.diedavids.de/wizard/0.2/wizard-component.xsd"` with `xmlns:wizard="http://schemas.diedavids.de/wizard/1.0/wizard-component.xsd"` in all screen definitions
