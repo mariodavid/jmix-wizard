@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <item screen="CheckoutWizard" id="checkoutWizard"
+          caption="msg://de.diedavids.jmix.jwexample.screen.checkoutwizard/checkoutWizard.caption"
+          icon="font-icon:MAGIC" insertBefore="administration"/>
+
+    <menu id="application" caption="msg://de.diedavids.jmix.jwexample/menu.application" insertBefore="administration">
+        <item screen="User.browse" caption="msg://de.diedavids.jmix.jwexample.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="Product.browse" caption="msg://de.diedavids.jmix.jwexample.entity.product/productBrowse.menu"/>
+        <item screen="Customer.browse" caption="msg://de.diedavids.jmix.jwexample.entity.customer/customerBrowse.menu"/>
+        <item screen="Order_.browse" caption="msg://de.diedavids.jmix.jwexample.entity.order/orderBrowse.menu"/>
+    </menu>
+</menu-config>

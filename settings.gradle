@@ -2,6 +2,7 @@ rootProject.name = 'jmix-wizard-addon'
 
 include 'jmix-wizard'
 include 'jmix-wizard-starter'
+include 'jmix-wizard-example'
 
 rootProject.children.each { p1 ->
     p1.buildFileName = "${p1.name}.gradle"

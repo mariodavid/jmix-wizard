@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:wizard="http://schemas.diedavids.de/wizard/1.0/wizard-component.xsd"
+        caption="msg://checkoutWizard.caption">
+    <data>
+        <instance id="customerDc"
+                  class="de.diedavids.jmix.jwexample.entity.Customer">
+            <fetchPlan extends="_local">
+                <property name="addresses" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="addressesDc" property="addresses"/>
+        </instance>
+
+
+        <instance id="deliveryAddressDc"
+                  class="de.diedavids.jmix.jwexample.entity.Address" />
+
+        <instance id="invoiceAddressDc"
+                  class="de.diedavids.jmix.jwexample.entity.Address" />
+
+        <instance id="orderDc"
+                  class="de.diedavids.jmix.jwexample.entity.Order">
+            <fetchPlan extends="_local">
+                <property name="customer" fetchPlan="_instance_name"/>
+                <property name="deliveryAddress" fetchPlan="_instance_name"/>
+                <property name="invoiceAddress" fetchPlan="_instance_name"/>
+                <property name="orderLines" fetchPlan="_instance_name">
+                    <property name="position"/>
+                    <property name="product" fetchPlan="_instance_name"/>
+                    <property name="amount"/>
+                    <property name="amountUnit"/>
+                </property>
+            </fetchPlan>
+            <loader/>
+            <collection id="orderLinesDc" property="orderLines"/>
+        </instance>
+    </data>
+
+    <dialogMode
+            width="1024"
+            height="800px"
+            forceDialog="true" />
+
+    <layout expand="wizard">
+        <wizard:wizard id="wizard" width="100%">
+            <wizard:tab
+                    id="step1"
+                    icon="font-icon:USER"
+                    caption="msg://step1Customer"
+                    spacing="true"
+                    margin="true"
+            >
+                <hbox id="customerContentBox" spacing="true" height="250px" width="100%" >
+                    <groupBox caption="msg://customerInformation" width="100%" height="100%">
+                        <form id="customerForm"
+                              width="100%"
+                              dataContainer="customerDc"
+                        >
+                            <column width="100%">
+                                <field property="salutation"/>
+                                <field property="name"/>
+                                <field property="firstName"/>
+                                <field property="birthday"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                    <groupBox caption="msg://customerCommunication" width="100%" height="100%">
+                        <form id="communicationForm"
+                              width="100%"
+                              dataContainer="customerDc"
+                        >
+                            <column width="100%">
+                                <field property="email"/>
+                                <field property="phone"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                </hbox>
+            </wizard:tab>
+            <wizard:tab
+                    id="step2"
+                    icon="font-icon:MAP_MARKER"
+                    caption="msg://step2Address"
+                    spacing="true"
+                    margin="true"
+            >
+                <vbox id="addressContentBox" spacing="true" width="100%" expand="invoiceAddressGroupBox">
+                    <groupBox
+                            spacing="true"
+                            width="100%"
+                            caption="msg://deliveryAddress">
+                        <form id="deliveryAddressForm"
+                              dataContainer="deliveryAddressDc"
+                        >
+                            <column width="250px">
+                                <field property="street"/>
+                                <field property="postalCode"/>
+                                <field property="city"/>
+                                <field property="country"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                    <groupBox
+                            id="invoiceAddressGroupBox"
+                            spacing="true"
+                            width="100%"
+                            caption="msg://invoiceAddress">
+                        <checkBox id="sameAsDeliveryAddress"
+                                  width="100%"
+                                  caption="msg://sameAsDeliveryAddress" />
+                        <form id="invoiceAddressForm"
+                              width="100%"
+                              dataContainer="invoiceAddressDc">
+                            <column width="250px">
+                                <field property="street"/>
+                                <field property="postalCode"/>
+                                <field property="city"/>
+                                <field property="country"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                </vbox>
+            </wizard:tab>
+            <wizard:tab
+                    id="step3"
+                    icon="font-icon:LIST_UL"
+                    caption="msg://step3Items"
+                    spacing="true"
+                    margin="true"
+            >
+                <table id="orderLinesTable" dataContainer="orderLinesDc" width="100%" height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="position"/>
+                        <column id="product"/>
+                        <column id="amount"/>
+                        <column id="amountUnit"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="orderLinesTable.create"/>
+                        <button action="orderLinesTable.edit"/>
+                        <button action="orderLinesTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </wizard:tab>
+            <wizard:tab
+                    id="step4"
+                    icon="font-icon:CHECK"
+                    caption="msg://step4Summary"
+                    spacing="true"
+                    margin="true"
+            >
+                <hbox spacing="true" width="100%" height="100%">
+                    <groupBox showAsPanel="true" caption="msg://summary" height="500px" spacing="true">
+                        <form id="summaryCustomer"
+                              childrenCaptionWidth="150px"
+                              width="100%"
+                              dataContainer="customerDc">
+                            <column width="100%">
+                                <field editable="false" property="salutation"/>
+                                <field editable="false" property="name"/>
+                                <field editable="false" property="firstName"/>
+                                <field editable="false" property="email"/>
+                                <field editable="false" property="phone"/>
+                            </column>
+                        </form>
+                        <form id="summaryAddress"
+                              childrenCaptionWidth="150px"
+                              width="100%"
+                              dataContainer="deliveryAddressDc">
+                            <column width="100%">
+                                <field editable="false" property="street"/>
+                                <field editable="false" property="postalCode"/>
+                                <field editable="false" property="city"/>
+                                <field editable="false" property="country"/>
+                            </column>
+                        </form>
+                    </groupBox>
+                    <groupBox showAsPanel="true" caption="Items"  height="400px">
+                        <table id="summaryOrderLinesTable"
+                               dataContainer="orderLinesDc"
+                               columnControlVisible="false"
+                               reorderingAllowed="false"
+                               contextMenuEnabled="false"
+                               showSelection="false"
+                               sortable="false"
+                               width="100%">
+                            <columns>
+                                <column id="product"/>
+                                <column id="amount"/>
+                                <column id="amountUnit"/>
+                            </columns>
+                        </table>
+                    </groupBox>
+                </hbox>
+            </wizard:tab>
+        </wizard:wizard>
+    </layout>
+</window>

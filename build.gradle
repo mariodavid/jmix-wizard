@@ -29,42 +29,46 @@ subprojects {
     group = this.group
     version = this.version
 
-    def props = new Properties()
-    buildFile.withInputStream { props.load(it) }
-    def subArchivesBaseName = props.getProperty('archivesBaseName')
-    def archName = subArchivesBaseName.substring(1, subArchivesBaseName.length() - 1)
+    if (it.name != "jmix-wizard-example") {
+        def props = new Properties()
+        buildFile.withInputStream { props.load(it) }
+        def subArchivesBaseName = props.getProperty('archivesBaseName')
+        def archName = subArchivesBaseName.substring(1, subArchivesBaseName.length() - 1)
 
-    sourceCompatibility = '1.8'
 
-    java {
-        withSourcesJar()
-    }
+        sourceCompatibility = '1.8'
 
-    artifacts {
-        archives sourcesJar
-    }
+        java {
+            withSourcesJar()
+        }
 
-    publishing {
-        repositories {
-            maven {
-                name = "GitHubPackages"
-                url = uri("https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY"))
-                credentials {
-                    username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-                    password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+        artifacts {
+            archives sourcesJar
+        }
+
+        publishing {
+            repositories {
+                maven {
+                    name = "GitHubPackages"
+                    url = uri("https://maven.pkg.github.com/" + System.getenv("GITHUB_REPOSITORY"))
+                    credentials {
+                        username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                        password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+                    }
+                }
+            }
+            publications {
+                javaMaven(MavenPublication) {
+                    artifactId = "jmix-wizard" //archName
+                    from components.java
                 }
             }
         }
-        publications {
-            javaMaven(MavenPublication) {
-                artifactId = archName
-                from components.java
-            }
+
+        // remove after https://youtrack.jetbrains.com/issue/IDEA-227215 is fixed
+        tasks.withType(GenerateModuleMetadata) {
+            enabled = false
         }
     }
 
-    // remove after https://youtrack.jetbrains.com/issue/IDEA-227215 is fixed
-    tasks.withType(GenerateModuleMetadata) {
-        enabled = false
-    }
 }
