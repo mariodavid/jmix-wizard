@@ -15,19 +15,6 @@
           </option>
         </ModuleSettings>
       </entry>
-      <entry key="jmix-wizard-addon.jmix-wizard.test">
-        <ModuleSettings>
-          <option name="dataStoreOptions">
-            <map>
-              <entry key="main">
-                <value>
-                  <DataStoreSettings />
-                </value>
-              </entry>
-            </map>
-          </option>
-        </ModuleSettings>
-      </entry>
     </moduleSettings>
   </component>
 </project>
