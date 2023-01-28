@@ -4,6 +4,7 @@ import io.jmix.core.DeletePolicy;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.entity.annotation.OnDelete;
 import io.jmix.core.metamodel.annotation.Composition;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.Column;
@@ -38,6 +39,7 @@ public class Customer {
     @Column(name = "SALUTATION")
     protected String salutation;
 
+    @InstanceName
     @NotNull
     @Column(name = "NAME", nullable = false)
     protected String name;
