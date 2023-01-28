@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2023-01-28
+
+Changed version to align with Jmix minor version to avoid confusion
+
+### Dependencies
+- Jmix 1.3.5
+
 ## [1.1.0] - 2022-03-25
 
 ### Dependencies

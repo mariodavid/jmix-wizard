@@ -2,7 +2,7 @@
 
 # Jmix Wizard Example
 
-This example application let's you create UI wizards through a specific UI component.
+This example application lets you create UI wizards through a specific UI component.
 
 ![checkout-wizard-step-1](https://github.com/mariodavid/jmix-wizard/blob/main/img/1-customer.png?raw=true)
 
