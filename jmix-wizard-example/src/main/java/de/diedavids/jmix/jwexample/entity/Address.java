@@ -1,6 +1,8 @@
 package de.diedavids.jmix.jwexample.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.DependsOnProperties;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 
 import javax.persistence.Column;
@@ -47,7 +49,7 @@ public class Address {
     protected String country;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "CUSTOMER_ID")
+    @JoinColumn(name = "CUSTOMER_ID", nullable = false)
     protected Customer customer;
 
     public void setCustomer(Customer customer) {
@@ -90,5 +92,11 @@ public class Address {
 
     public String getCity() {
         return city;
+    }
+
+    @InstanceName
+    @DependsOnProperties({"street", "postalCode", "city"})
+    public String getInstanceName() {
+        return String.format("%s %s %s", street, postalCode, city);
     }
 }
