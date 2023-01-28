@@ -59,7 +59,7 @@ subprojects {
             }
             publications {
                 javaMaven(MavenPublication) {
-                    artifactId = "jmix-wizard" //archName
+                    artifactId = archName
                     from components.java
                 }
             }
